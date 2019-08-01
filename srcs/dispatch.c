@@ -6,35 +6,32 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/22 14:50:36 by sholiak           #+#    #+#             */
-/*   Updated: 2019/07/22 16:24:49 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/07/31 13:27:57 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
-int dispatch(va_list ap, t_flags *table)
+void	dispatch(va_list ap, t_flags *t)
 {
-    int choice;
-    char *str;
-
-    str = "cspdiouxXf";
-    choice = 0;
-    while(str[choice] != table->specifier)
-    choice++;
-
-    determine *options[11] = 
-    {
-        process_c,
-        // process_s,
-        // process_p,
-        // process_d,
-        // process_i,
-        // process_o,
-        // process_u,
-        // process_x,
-        // process_X,
-        // process_f
-    };
-    options[choice](ap, table);
-    return (0);
+	if (t->specifier == 'c')
+		process_c(ap, t);
+	if (t->specifier == 's')
+		process_s(ap, t);
+	if (t->specifier == 'p')
+		process_p(ap, t);
+	if (t->specifier == 'd')
+		process_d(ap, t);
+	if (t->specifier == 'i')
+		process_i(ap, t);
+	if (t->specifier == 'u')
+		process_u(ap, t);
+	if (t->specifier == 'o')
+		process_o(ap, t);
+	if (t->specifier == 'x')
+		process_x(ap, t);
+	if (t->specifier == 'X')
+		process_xx(ap, t);
+	if (t->specifier == 'f')
+		process_f(ap, t);
 }
